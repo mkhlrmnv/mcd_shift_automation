@@ -18,7 +18,7 @@ if os.path.exists('token.json'):#checks if user has already allowed program to u
 
 if not creds  or not creds.valid:#if user haven't done it yet pop-up window will apear where user has to allow program to use google api
     if creds and creds.expired and creds.refresh_token:
-        creds.refresh(Request())
+        creds.refresh(Request())  # uus kommentti
     else:
         flow = InstalledAppFlow.from_client_secrets_file(CLIENT_file, SCOPES)
         creds = flow.run_local_server(port=0)
