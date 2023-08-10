@@ -14,11 +14,11 @@
 
 <h4>2. Enable Google API -> https://developers.google.com/drive/api/quickstart/python</h4>
 
-<h4>Rename json file and put it into main folder</h4>
+<h4>3. Rename json file and put it into main folder</h4>
 <p> - While doing previous stepp you downloaded .json file from 0AUTH2.0 client and renamed it to 'credentials.json', now rename it one more time to 'automation.json'
 <p> - After that open main folder that you downloaded in first step and find there 'automation.json' file and replace it with you 'automation.json' file</p>
 
-<h4>Run main.exe</h4>
+<h4>4. Run main.exe</h4>
 <p>Now you good to go, just find 'main' file in main folder and run it</p>
 <p> - First time runnign will pop-up default browser, just you guide bellow for that</p>
 
