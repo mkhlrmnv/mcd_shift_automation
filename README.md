@@ -3,6 +3,13 @@
 <br>
 <br>
 
+<h2>Update 14.08.2023 - Version 2.1</h2>
+<p>Update to 'defs.py' that fixes problem with vocation days in your calendar and added one new function to 'UI.py'</p>
+
+<br>
+<br>
+<br>
+
 <h2>If you want to install everything by files and open it in your vs code scroll past Version 2</h2>
 <br>
 <br>
