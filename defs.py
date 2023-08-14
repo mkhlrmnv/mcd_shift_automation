@@ -57,8 +57,11 @@ class ShiftScraper:
                 days = week.find_elements(By.XPATH, ".//td")
                 for shift in days:
                     try:
-                        shift_list.append(
-                            shift.find_element(By.XPATH, ".//a").text)
+                        text = shift.find_element(By.XPATH, ".//a").text
+                        if text != 'L':
+                            shift_list.append(text)
+                        else:
+                            shift_list.append(-1)
                     except:
                         shift_list.append(-1)
             except:
