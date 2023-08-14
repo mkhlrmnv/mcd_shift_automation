@@ -29,7 +29,13 @@ class RegistrationForm:
 
         Button(self.base, text='Run', width=20, bg='brown', fg='white', command=self.save_close).place(x=180, y=280) #submit button that runst save_close funktion when pressed
         
-    def save_close(self):  #saves username, password and selection to secret file
+    def get_credentials(self):
+        username = self.entry_1.get()
+        password = self.entry_2.get()
+        selection = self.varblbl.get()
+        return username, password, selection
+        
+    def save_close(self):
         username, password, selection = self.get_credentials()
         f = open("secrets.txt", "w+")
         f.write(f"{username}\n")
