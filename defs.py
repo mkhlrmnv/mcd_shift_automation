@@ -26,20 +26,22 @@ class ShiftScraper:
                 By.CSS_SELECTOR, 'input[type="text"]').send_keys(user)
             self.driver.find_element( #inserts password
                 By.CSS_SELECTOR, 'input[type="password"]').send_keys(passw)
+            self.driver.find_element(
+                By.XPATH, '//*[@id="tabs"]/li[2]')
             #self.driver.find_element(
                 #By.XPATH, '//*[@id="wcmdLogin"]').click()
             
             match minne:  #depending what was selection clicks right button
-                case "<": x_path = '//*[@id="wcmdPreviousPeriod"]'
-                case "=": x_path = '//*[@id="aspnetForm"]/div[3]/table/tbody/tr/td[2]/div/div/div/button'
-                case ">": x_path = '//*[@id="wcmdNextPeriod"]'
+                case "<\n": x_path = '//*[@id="wcmdPreviousPeriod"]'
+                case "=\n": x_path = '//*[@id="aspnetForm"]/div[3]/table/tbody/tr/td[2]/div/div/div/button'
+                case ">\n": x_path = '//*[@id="wcmdNextPeriod"]'
               
             self.driver.find_element(By.XPATH, x_path).click()
         except: #prints error if it accured 
             print("ERROR: Sisäänkirjautuminen epäonnistui")
             
-        f.truncate(0)  #deletes username, password and selection from secret file
-            
+        if int(f.readline()) == 0: #if user selected not to remember his credentials
+            f.truncate(0)  #deletes username, password and selection from secret file           
 
     def get_shifts(self):  # gets list of shifts
         time.sleep(1)
@@ -114,3 +116,4 @@ if __name__ == "__main__":
 
     print(shifts)
     print(dates)
+
