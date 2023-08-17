@@ -3,6 +3,13 @@
 <br>
 <br>
 
+<h2>Update 17.08.2023 - Version 2.2</h2>
+<p>Added 'Remember me' check box that if checked saves users credentials for the next time</p>
+
+<br>
+<br>
+<br>
+
 <h2>Update 14.08.2023 - Version 2.1</h2>
 <p>Update to 'defs.py' that fixes problem with vocation days in your calendar and added one new function to 'UI.py'</p>
 
