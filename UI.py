@@ -2,8 +2,8 @@ from tkinter import*
 
 class RegistrationForm:
     def __init__(self):  #makes new tkinter window
-        f = open("secrets.txt", "r")
-        if len(f.readlines()) == 0:
+        f = open("secrets.txt", "r") 
+        if len(f.readlines()) == 0: #if file with secrets is empty creates window that asks for username and etc.
             self.base = Tk()
             self.base.geometry('500x500')
             self.base.title("Registration Form")
@@ -29,16 +29,16 @@ class RegistrationForm:
             Radiobutton(self.base, text="ongoing", padx=5, variable=self.varblbl, value="=").place(x=310, y=230) #person wants to get
             Radiobutton(self.base, text="next", padx=5, variable=self.varblbl, value=">").place(x=385, y=230)
             
-            self.remember_me = IntVar()
+            self.remember_me = IntVar() #check box "remember me" that if selected saves credentials for next time
             Checkbutton(self.base, text="Remember me", width = 10, variable=self.remember_me, onvalue=1, offvalue=0).place(x=200, y=280)
 
             Button(self.base, text='Run', width=20, bg='brown', fg='white', command=self.save_close_1).place(x=180, y=330) #submit button that runst save_close funktion when pressed
-        else:
+        else: #if there was something in the file, creates window with only start button and checkbox "Remember me"
             self.base = Tk()
             self.base.geometry('500x500')
             self.base.title("Start Button")
             
-            self.remember_me = IntVar()
+            self.remember_me = IntVar() #check box "remember me" that if selected saves credentials for next time
             self.remember_me.set(1)
             Checkbutton(self.base, text="Remember me", width = 20, variable=self.remember_me, onvalue=1, offvalue=0).place(x=180, y=230)
             
@@ -59,7 +59,7 @@ class RegistrationForm:
         print("Selection:", selection)
         print("Remember me value:", remember_me)
         
-    def save_close_2(self):
+    def save_close_2(self): #saves and closes window if secrets file contained credentials from previous time
         f = open("secrets.txt", "r")
         lines = f.readlines()
         lines[3] = str(self.remember_me.get())
@@ -68,7 +68,7 @@ class RegistrationForm:
         f_out.close()
         self.base.destroy()   
         
-    def save_close_1(self):
+    def save_close_1(self): #saves and closes window if secrets file was empty  
         username, password, selection, remember_me = self.get_credentials()
         f = open("secrets.txt", "w+")
         f.write(f"{username}\n")
@@ -80,7 +80,11 @@ class RegistrationForm:
 
     def run(self): #runs loop for a window
         self.base.mainloop()
+        
+        
+
 
 if __name__ == "__main__":
     registration = RegistrationForm()
     registration.run()
+    
