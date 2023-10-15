@@ -41,7 +41,7 @@ def main():
     shifts = scraper.get_shifts()  # get list of shifts
     dates = scraper.get_dates()  # get list on dates
 
-    scraper.quit()  # closes website
+    # scraper.quit()  #closes website
 
     x = 0
 
@@ -51,6 +51,8 @@ def main():
             start_minute = str(i[2:4])  # gets starting hour, minute etc.
             end_hour = str(i[5:7])
             end_minute = str(i[7:9])
+
+            timezone = "Etc/GMT+2"  # talviaika Etc/GMT+2, kesäaika Europe/Helsinki
 
             # changes date format to Y.m.d from d.m.Y, it does it only here because i prefere d.m.Y format more
             date = scraper.change_format(dates[x])
@@ -64,20 +66,21 @@ def main():
                 event = {  # creates event if it is a night shift
                     'summary': 'Work',
                     'start': {'dateTime': f'{date}T{start_hour}:{start_minute}:00+03:00',
-                              'timeZone': 'Europe/Helsinki',
+                              # talviaika Etc/GMT+2, kesäaika Europe/Helsinki
+                              'timeZone': f'{timezone}',
                               },
                     'end': {'dateTime': f'{next_day_str}T{end_hour}:{end_minute}:00+03:00',
-                            'timeZone': 'Europe/Helsinki',
+                            'timeZone': f'{timezone}',
                             },
                 }
             else:
                 event = {  # creates event if it is not a night shift
                     'summary': 'Work',
                     'start': {'dateTime': f'{date}T{start_hour}:{start_minute}:00+03:00',
-                              'timeZone': 'Europe/Helsinki',
+                              'timeZone': f'{timezone}',
                               },
                     'end': {'dateTime': f'{date}T{end_hour}:{end_minute}:00+03:00',
-                            'timeZone': 'Europe/Helsinki',
+                            'timeZone': f'{timezone}',
                             },
                 }
             # sends event to google calendar
@@ -85,6 +88,8 @@ def main():
             # print(event)
             print('Event created: %s' % (e.get('htmlLink')))  # prints errors
         x += 1
+
+    scraper.quit()
 
 
 if __name__ == "__main__":
