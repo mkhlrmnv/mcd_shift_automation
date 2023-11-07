@@ -31,6 +31,12 @@ class ShiftScraper:
             # self.driver.find_element(
             # By.XPATH, '//*[@id="wcmdLogin"]').click()
 
+            try:
+                self.driver.find_element(
+                    By.XPATH, '//*[@id="tabs"]/li[2]').click()
+            except:
+                print("")
+
             match minne:  # depending what was selection clicks right button
                 case "<\n": x_path = '//*[@id="wcmdPreviousPeriod"]'
                 case "=\n": x_path = '//*[@id="aspnetForm"]/div[3]/table/tbody/tr/td[2]/div/div/div/button'
